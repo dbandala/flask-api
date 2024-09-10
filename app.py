@@ -15,12 +15,12 @@ def get_stores():
     return {"stores": list(stores.values())}, 200 # 200 is the status code for success
 
 # get information from store
-@app.get("/store/<string:store_id>")
-def get_store(store_id):
-    if store_id in stores:
-        return {"store": stores[store_id], "store_id": store_id}, 200
-    else:
-        abort(404, message="Store not found") # 200 is the status code for success
+# @app.get("/store/<string:store_id>")
+# def get_store(store_id):
+#     if store_id in stores:
+#         return {"store": stores[store_id], "store_id": store_id}, 200
+#     else:
+#         abort(404, message="Store not found") # 200 is the status code for success
 
 # get items from store
 @app.get("/store/<string:store_id>/item")
@@ -49,7 +49,7 @@ def get_item(item_id):
 
 
 ###########################################################################
-#### GET METHODS
+#### POST METHODS
 ###########################################################################
 @app.post("/store")
 def create_store():
@@ -107,12 +107,12 @@ def create_item_in_store():
 ###########################################################################
 #### DELETE METHODS
 ###########################################################################
-@app.delete("/store/<string:store_id>")
-def delete_store(store_id):
-    if store_id not in stores:
-        abort(404, message="Store not found")
-    del stores[store_id]
-    return {"message": "Store deleted"}, 200
+# @app.delete("/store/<string:store_id>")
+# def delete_store(store_id):
+#     if store_id not in stores:
+#         abort(404, message="Store not found")
+#     del stores[store_id]
+#     return {"message": "Store deleted"}, 200
 
 @app.delete("/item/<string:item_id>")
 def delete_item(item_id):
